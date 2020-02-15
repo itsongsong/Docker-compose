@@ -8,6 +8,8 @@ services:
     build: ./nginx #这里nginx指我们的创建的目录
     ports:
       - "8080:8080"
+    volumes: 
+      - /var/log/nginx:/var/log/nginx #增加本地和容器nginx目录映射
   db:
     build: ./mysql
     command:  --default-authentication-plugin=mysql_native_password
