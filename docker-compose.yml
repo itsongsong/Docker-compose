@@ -7,6 +7,15 @@ services:
     depends_on:  #指定依赖项，解决容器启动先后问题
       - db
       - redis
+  php56:
+    build: ./php56
+    ports:
+      - 9008:9000
+    volumes:
+      - /var/www/ecshop_online:/var/www/ecshop_online
+      - /var/www/:/var/www/
+    links:
+      - db
   nginx:
     build: ./nginx #这里nginx指我们的创建的目录
     ports:
