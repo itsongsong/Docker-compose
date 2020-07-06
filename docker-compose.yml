@@ -19,9 +19,14 @@ services:
   nginx:
     build: ./nginx #这里nginx指我们的创建的目录
     ports:
-      - "8080:8080"
+      - 80:80
+      - 443:443
     volumes: 
       - /var/log/nginx:/var/log/nginx #增加本地和容器nginx目录映射
+      - /var/www/:/var/www/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    links:
+      - php56
   db:
     build: ./mysql
     command:  --default-authentication-plugin=mysql_native_password
