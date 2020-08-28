@@ -36,10 +36,8 @@ RUN docker-php-ext-install soap mysql mysqli pdo_mysql opcache\
 # pecl貌似被墙了,http://pecl.php.net/ 要包自己下
 RUN curl 'http://pecl.php.net/get/redis-2.2.5.tgz' -o redis.tgz \
     && pecl install redis.tgz \
-
     && curl  'http://pecl.php.net/get/xdebug-2.2.2.tgz' -o xdebug.tgz \
 	&& pecl install xdebug.tgz \
-
 	&& curl  'http://pecl.php.net/get/swoole-2.0.6.tgz' -o swoole.tgz \
     && pecl install swoole.tgz \
 	&& docker-php-ext-enable redis xdebug swoole gmp
