@@ -1,5 +1,8 @@
 FROM php:7.3-fpm-alpine
 
+COPY ./conf/php-fpm.conf /usr/local/etc/php/php-fpm.conf
+COPY ./conf/php.ini /usr/local/etc/php/php.ini
+
 # 修改了 alpine 系统的软件源
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \ 
     && docker-php-ext-install pdo_mysql \
